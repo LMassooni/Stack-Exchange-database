@@ -1,0 +1,9 @@
+CSV/
+datascience.stackexchange/
+.ipynb_checkpoints/
+.virtual_documents/
+.vscode/
+learning_sqlalchemy.ipynb
+learning_sqlalchemy.py
+token.txt
+SQLAlchemy
