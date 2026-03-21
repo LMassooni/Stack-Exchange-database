@@ -7,3 +7,5 @@ learning_sqlalchemy.ipynb
 learning_sqlalchemy.py
 token.txt
 SQLAlchemy
+.env
+csv_analises/

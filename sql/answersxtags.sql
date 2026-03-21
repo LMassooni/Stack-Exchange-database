@@ -11,7 +11,6 @@ AND p.Score > 10 -- minimum score
 AND p.Id IN (
 (SELECT ps.ParentId 
 FROM Posts ps 
-WHERE ps.ParentId IS NOT "NULL" 
-AND EXISTS) -- Subquery that returns the Id of the questions that receive answers
+WHERE ps.ParentId != "NULL") -- Subquery that returns the Id of the questions that receive answers
 ) 
 GROUP BY t.TagName;
