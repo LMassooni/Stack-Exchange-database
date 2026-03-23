@@ -8,7 +8,6 @@ ON p.Tags LIKE LOWER(CONCAT('%',t.TagName,'%')) -- Stack exchange puts all the t
 WHERE p.PostTypeId = 1  -- only questions
 AND LENGTH(p.Body)>10 -- The question need to be more than 10 letters long (in case of a post not intend)
 AND Score>10 -- low scores will not be count
-AND AnswerCount>0 -- need to be answered
 GROUP BY t.TagName 
 HAVING n_questions > 5 -- Tags mentioned less then 5 times will not be count as well
 ORDER BY n_questions DESC;
