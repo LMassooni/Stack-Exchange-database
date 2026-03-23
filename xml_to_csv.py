@@ -15,7 +15,6 @@ df_users.to_csv('Users.csv',index=False)
 df_votes = pd.read_xml('datascience.stackexchange/Votes.xml')
 df_votes.to_csv('Votes.csv',index=False)
 '''
-import pandas as pd
 from lxml import etree
 
 xml_file = "datascience.stackexchange/Posts.xml"
@@ -34,3 +33,21 @@ for row in root.findall(".//row"):
 df = pd.DataFrame(data)
 
 df.to_csv(csv_file, index=False)
+
+## PASSAGEM DOS ARQUIVOS .CSV PARA O MYSQL
+import pandas as pd
+from sqlalchemy import create_engine
+import os
+from dotenv import load_dotenv
+
+## Keys for acess the database
+load_dotenv()
+
+## Acessing the database throught SQLAlchemy -> the database is local
+engine = create_engine(f"mysql+mysqlconnector://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}",
+    echo=True)
+arquivos = ["Badges","Comments","PostHistory","Posts","PostLinks","Tags","Users","Votes"]
+for nome in arquivos:
+    df = pd.read_csv(f"CSV/{nome}.csv")
+    print(f"{nome}")
+    df.to_sql(name = f'{nome}',con=engine,if_exists = 'replace',index = False)
