@@ -4,7 +4,8 @@ The goal of the project is to integrate SQL queries with python analysis using t
 
 The process stabilish is explained below.
 
-## First, get the .XML files from:  **`https://dn720201.ca.archive.org/0/items/stackexchange/`**
+First, get the .XML files from:
+**`https://dn720201.ca.archive.org/0/items/stackexchange/`**
 and download **`datascience.stackexchange.com.7z`**
 
 ## Transform and upload to MySQL database
@@ -27,3 +28,12 @@ The file **`index.sql`** take care of that, using columns such as "Id" or "TagId
 ## SQL files
 
 In the folder sql, we have the queries in .sql files. Each of them perform one query that will be saved in a .csv file. The information contained in each one of the files are displayed in **`analise.ipynb`**
+
+## Analysis
+
+Finally, **`analise.ipynb`** executes the .sql files using SQLAlchemy, and perform some analysis with the data queried. Below, I show two examples of results:
+
+![ ](imagens/tagsxanswers.png)
+
+
+![ ](imagens/tagsxtime.png)
