@@ -1,3 +1,5 @@
+SELECT 'tag', 'n_questions'
+UNION ALL
 SELECT t.TagName AS tags, SUM(p.AnswerCount) AS questions_w_a -- Again, we will get Id count per tagname, now only for those questions that has answers
 INTO OUTFILE '/var/lib/mysql-files/answersxtags.csv' 
 FIELDS TERMINATED BY ','

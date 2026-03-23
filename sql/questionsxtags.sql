@@ -1,4 +1,6 @@
-SELECT t.TagName, count(*) n_questions -- We will pull the number of questions for each Tag 
+SELECT 'tag', 'n_questions'
+UNION ALL
+SELECT t.TagName tag, count(*) n_questions -- We will pull the number of questions for each Tag 
 INTO OUTFILE '/var/lib/mysql-files/questionsxtags.csv' -- Save in the right folder (the one with the default permission)
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"' 

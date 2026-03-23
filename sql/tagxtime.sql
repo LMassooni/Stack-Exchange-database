@@ -4,6 +4,8 @@
 -- MODIFY COLUMN CreationDate Date 
 -- MODIFY COLUMN ClosedDate Date -- If you get the .XML tables of stack exchange, the process of converting to csv and up to a database in MySQL will convert the dates to strings. This lines will convert the string date to the format YY-MM-DD. (we don't need the time for this analysis)
 
+SELECT 'tag','year','month','n_questions'
+UNION ALL
 SELECT t.TagName, YEAR(p.CreationDate),MONTH(p.CreationDate), count(*) n_questions -- We will separete the query to tag, year, month and count que amount of questions in each month 
 INTO OUTFILE '/var/lib/mysql-files/timextags.csv' 
 FIELDS TERMINATED BY ',' 
